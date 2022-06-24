@@ -1,0 +1,17 @@
+.title{
+    flex: 1;
+  
+    color: gold;
+    font-family: "Montserrart";
+    font-weight: 'bold';
+    cursor: pointer;
+}
+.headerDIV{
+    /* background-color: black; */
+
+}
+
+.selectHeader{
+    /* color: white; */
+    background-color: gold;
+}
