@@ -65,89 +65,68 @@ const CoinsTable = () => {
     {
       loading ? <LinearProgress style={{backgroundColor:'gold'}}></LinearProgress>:
       (
-        <Table>
-          <TableHead style={{backgroundColor:'#EEBC10'}}>
-              <TableRow>
-              {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
-                <TableCell
-                  style={{
-                    color: "black",
-                    fontWeight: "700",
-                    fontFamily: "Montserrat",
-                  }}
-                  key={head}
-                  align={head === "Coin" ? "" : "right"}
-                >
-                  {head}
-                </TableCell>
-              ))}
-              
-              
-              
-              </TableRow>
-          
-              <TableBody>
-              {
-                
-                coin.map((eachCoin)=>{
-                  
-                  const profit = eachCoin.price_change_percentage_24h > 0;
-                  return(
-                    <TableRow onClick={()=> navigate(`/coins/${eachCoin.id}`)} className='row'>
-                      <TableCell component='th' scope='row' style={{display:'flex',gap:15}}>
-                      
-                        <img src={eachCoin.image} alt={eachCoin.name} height='50' style={{marginBottom:15}}></img>
-                        <div
-                        style={{ display: "flex", flexDirection: "column" }}
+        <Table aria-label="simple table">
+        <TableHead style={{ backgroundColor: "#EEBC1D" }}>
+          <TableRow>
+            {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+              <TableCell
+                style={{color: "black", fontWeight: "700", fontFamily: "Montserrat", }}
+                key={head} align={head === "Coin" ? "" : "right"}>
+                {head}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {coin.map((eachCoin) => {
+              const profit = eachCoin.price_change_percentage_24h > 0;
+              return (
+                <TableRow onClick={()=> navigate(`/coins/${eachCoin.id}`)} key={eachCoin.name} className='row'>
+                  <TableCell component="th" scope="row"  style={{  display: "flex",  gap: 15, }}>
+                    <img src={eachCoin.image} alt={eachCoin.name} height="50" style={{ marginBottom: 10 }} />
+                    <div
+                      style={{ display: "flex", flexDirection: "column" }}
+                    >
+                      <span
+                        style={{
+                          textTransform: "uppercase",
+                          fontSize: 22,color:'white'
+                        }}
                       >
-                        <span
-                          style={{
-                            textTransform: "uppercase",
-                            fontSize: 22, color:'white'
-                          }}
-                        >
-                          {eachCoin.symbol}
-                        </span>
-                        <span style={{ color: "darkgrey" }}>
-                              {eachCoin.name}
-                            </span>
-                        </div>
-                      </TableCell>
-                      <TableCell align="right" style={{color:'white'}}>
-                      {currency.symbol}{" "}
-                      {numberWithCommas(eachCoin.current_price.toFixed(2))}
-                    </TableCell>
-                    
-                    <TableCell
-                          align="right"
-                          style={{
-                            color: profit > 0 ? "rgb(14, 203, 129)" : "red",
-                            fontWeight: 500,
-                          }}
-                        >
-                          {profit && "+"}
-                          {eachCoin.price_change_percentage_24h.toFixed(2)}%
-                        </TableCell>
-
-                        <TableCell align="right" style={{color:'white'}}>
-                          {currency.symbol}{" "}
-                          {numberWithCommas(
-                            eachCoin.market_cap.toString().slice(0, -6)
-                          )}
-                          M
-                        </TableCell>
-                    </TableRow>
-
-
-                  )
-                })
-              }
-              
-              </TableBody>
-          
-          </TableHead>
-        
-        </Table>
+                        {eachCoin.symbol}
+                      </span>
+                      <span style={{ color: "darkgrey" }}>
+                        {eachCoin.name}
+                      </span>
+                    </div>
+                  </TableCell>
+                  <TableCell align="right" style={{color:'white'}}>
+                    {currency.symbol}{" "}
+                    {numberWithCommas(eachCoin.current_price.toFixed(2))}
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    style={{
+                      color: profit > 0 ? "rgb(14, 203, 129)" : "red",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {profit && "+"}
+                    {eachCoin.price_change_percentage_24h.toFixed(2)}%
+                  </TableCell>
+                  <TableCell align="right" style={{color:'white'}}>
+                    {currency.symbol}{" "}
+                    {numberWithCommas(
+                      eachCoin.market_cap.toString().slice(0, -6)
+                    )}
+                    M
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+        </TableBody>
+      </Table>
       )
     }
     
