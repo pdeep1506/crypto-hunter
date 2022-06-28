@@ -3,8 +3,9 @@ import axios from 'axios';
 import { CoinList } from '../config/api';
 import { CryptoContextAPI } from '../CryptoContext';
 import './CoinsTable.css'
-import { Container,Typography,TextField,createTheme,ThemeProvider, TableContainer,LinearProgress,TableBody, Table, TableHead, TableRow,TableCell } from '@mui/material';
+import { Container,Typography,TextField,createTheme,ThemeProvider, TableContainer,LinearProgress,TableBody, Table, TableHead, TableRow,TableCell,Pagination } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
 const darkTheme = createTheme({
   palette: {
     primary: {
@@ -24,7 +25,7 @@ const CoinsTable = () => {
     const [search, setsearch] = useState('')
     const [coin, setcoin] = useState([]);
     const [loading, setloading] = useState(false)
-   
+    const [page, setPage] = useState(1);
     const fetchCoins = async() =>{
         setloading(true)
         const res = await axios.get(CoinList(currency.currency))
@@ -49,7 +50,7 @@ const CoinsTable = () => {
         })
         
     }
-    
+    // console.log(page)
   return (
     <ThemeProvider theme={darkTheme}>
     <Container style={{textAlign:'center'}}>
@@ -79,7 +80,8 @@ const CoinsTable = () => {
         </TableHead>
 
         <TableBody>
-          {coin.map((eachCoin) => {
+          {coin.slice((page -1 ) *10, (page - 1) * 10 + 10).map((eachCoin) => {
+            
               const profit = eachCoin.price_change_percentage_24h > 0;
               return (
                 <TableRow onClick={()=> navigate(`/coins/${eachCoin.id}`)} key={eachCoin.name} className='row'>
@@ -131,7 +133,10 @@ const CoinsTable = () => {
     }
     
     </TableContainer>
-
+  
+    <Pagination count={((coin.length)/10).toFixed(0)} style={{
+      padding: 20, width: "100%", display: "flex",justifyContent: "center", color:'white',
+    }} className='pagination' onChange={(event,value)=>{setPage(value)}} variant='outlined' shape='circular' size='large'> </Pagination>
 
     </Container>
     </ThemeProvider>

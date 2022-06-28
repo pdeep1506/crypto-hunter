@@ -4,5 +4,7 @@
     font-family: monospace;
 }
 .pagination{
-    color: gold;
+    /* color: gold;
+     */
+     background-color: gold;
 }
