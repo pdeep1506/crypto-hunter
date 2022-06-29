@@ -3,7 +3,7 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import './App.css';
 import HeaderCompo from './Components/Header/HeaderCompo'
 import HomePage from './Pages/HomePage'
-import CoinPage from './Pages/CoinPage'
+import CoinPage from './Components/CoinPage/CoinPage'
 
 function App() {
   

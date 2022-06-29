@@ -1,0 +1,30 @@
+.description{
+    width: 100%;
+    font-family: monospace;
+    padding: 25;
+    padding-bottom: 15;
+    padding-top: 0;
+    color: white;
+    text-align: center;
+}
+.heading{
+    font-weight: bold;
+    margin-bottom: 20;
+    font-family: monospace;
+    color: white;
+}
+
+.sidebar{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 250;
+    border-right: 2px solid grey;
+}
+.marketData{
+    align-self: flex-start;
+    padding: 25;
+    padding-top: 10;
+    width: 100%;
+}

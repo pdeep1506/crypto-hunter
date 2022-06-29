@@ -39,15 +39,16 @@ const CoinsTable = () => {
 
     const handleSearch = ()=>{
       
-        return coin.filter((eachCoin)=>{
+        //  coin.filter((eachCoin)=>{
             
-            eachCoin.name.toLowerCase().includes(search) || eachCoin.symbol.toLowerCase().includes(search)
+        //     eachCoin.name.toLowerCase().includes(search) || eachCoin.symbol.toLowerCase().includes(search)
             
-            // if(eachCoin.name.toLowerCase().includes(search) || eachCoin.symbol.toLowerCase().includes(search)){
-            //     console.log(eachCoin)
+        //     if(eachCoin.name.toLowerCase().includes(search) || eachCoin.symbol.toLowerCase().includes(search)){
+        //         console.log(eachCoin)
                 
-            // }
-        })
+        //     }
+        // }
+        // )
         
     }
     // console.log(page)
