@@ -4,7 +4,8 @@ import { CryptoContextAPI } from '../../CryptoContext'
 import { HistoricalChart } from '../../config/api'
 import axios from 'axios'
 import { CircularProgress } from '@mui/material'
-import { Line,LineChart,XAxis,YAxis,Tooltip,Legend,ResponsiveContainer } from 'recharts'
+// import { Line,LineChart,XAxis,YAxis,Tooltip,Legend,ResponsiveContainer } from 'recharts'
+import { Pie } from 'react-chartjs-2'
 
 
 const CoinInfo = ({coin}) => {
@@ -18,7 +19,7 @@ const CoinInfo = ({coin}) => {
 
   const fetchHistoricalData = async()=>{
     const res = await axios.get(HistoricalChart(coin.id,days,currency.currency))
-    // console.log('res',res)
+    // console.log('res',res.data)
     
     sethistoricaldata(res.data.prices)
   }
@@ -37,7 +38,9 @@ const CoinInfo = ({coin}) => {
         !historicaldata ? (
           <CircularProgress style={{ color: "gold" }} size={250} thickness={3}/>
         ):(
-            <div></div>
+          <>
+          
+          </>
         )
       }
       
