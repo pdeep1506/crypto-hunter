@@ -22,35 +22,26 @@ const CoinsTable = () => {
   const navigate = useNavigate();
     const currency = useContext(CryptoContextAPI)
     // console.log(currency)
-    const [search, setsearch] = useState('')
+    
     const [coin, setcoin] = useState([]);
     const [loading, setloading] = useState(false)
     const [page, setPage] = useState(1);
+    
     const fetchCoins = async() =>{
         setloading(true)
         const res = await axios.get(CoinList(currency.currency))
         // console.log(res.data)
         setcoin(res.data)
         setloading(false)
+        
     }
     useEffect(()=>{
         fetchCoins()
     },[currency.currency])
 
-    const handleSearch = ()=>{
-      
-        //  coin.filter((eachCoin)=>{
-            
-        //     eachCoin.name.toLowerCase().includes(search) || eachCoin.symbol.toLowerCase().includes(search)
-            
-        //     if(eachCoin.name.toLowerCase().includes(search) || eachCoin.symbol.toLowerCase().includes(search)){
-        //         console.log(eachCoin)
-                
-        //     }
-        // }
-        // )
+    
         
-    }
+    
     // console.log(page)
   return (
     <ThemeProvider theme={darkTheme}>
@@ -59,7 +50,7 @@ const CoinsTable = () => {
     Cryptocurrency Prices by Market Cap
     </Typography>
     
-    <TextField variant='outlined' label='Search For a Crypto Currency..' onChange={(e)=> setsearch(e.target.value)} style={{ marginBottom: 20, width: "100%", }}></TextField>
+
     
     <TableContainer>
     

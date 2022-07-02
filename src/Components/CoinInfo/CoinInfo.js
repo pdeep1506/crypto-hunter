@@ -5,7 +5,8 @@ import { HistoricalChart } from '../../config/api'
 import axios from 'axios'
 import { CircularProgress } from '@mui/material'
 // import { Line,LineChart,XAxis,YAxis,Tooltip,Legend,ResponsiveContainer } from 'recharts'
-import { Pie } from 'react-chartjs-2'
+// import { Pie } from 'react-chartjs-2'
+
 
 
 const CoinInfo = ({coin}) => {
@@ -38,9 +39,9 @@ const CoinInfo = ({coin}) => {
         !historicaldata ? (
           <CircularProgress style={{ color: "gold" }} size={250} thickness={3}/>
         ):(
-          <>
-          
-          </>
+          <div>
+            
+          </div>
         )
       }
       
