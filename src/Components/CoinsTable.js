@@ -23,6 +23,7 @@ const CoinsTable = () => {
     const currency = useContext(CryptoContextAPI)
     // console.log(currency)
     
+
     const [coin, setcoin] = useState([]);
     const [loading, setloading] = useState(false)
     const [page, setPage] = useState(1);
@@ -30,7 +31,7 @@ const CoinsTable = () => {
     const fetchCoins = async() =>{
         setloading(true)
         const res = await axios.get(CoinList(currency.currency))
-        // console.log(res.data)
+        console.log(res.data)
         setcoin(res.data)
         setloading(false)
         
@@ -76,7 +77,8 @@ const CoinsTable = () => {
             
               const profit = eachCoin.price_change_percentage_24h > 0;
               return (
-                <TableRow onClick={()=> navigate(`/coins/${eachCoin.id}`)} key={eachCoin.name} className='row'>
+                <TableRow
+                key={eachCoin.name} className='row'>
                   <TableCell component="th" scope="row"  style={{  display: "flex",  gap: 15, }}>
                     <img src={eachCoin.image} alt={eachCoin.name} height="50" style={{ marginBottom: 10 }} />
                     <div
